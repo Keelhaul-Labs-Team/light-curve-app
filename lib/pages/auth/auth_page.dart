@@ -13,7 +13,7 @@ class AuthPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: ElevatedButton(
-        onPressed: isSubmitting ? () {} : loginWithGoogle,
+        onPressed: isSubmitting ? null : loginWithGoogle,
         child: const Text('Loguearse con Google'),
       ),
     );

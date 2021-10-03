@@ -14,4 +14,14 @@ class AuthState with _$AuthState {
         isSubmitting: false,
         authFailureOrSuccessOption: none(),
       );
+
+  factory AuthState.submitting() => AuthState(
+        isSubmitting: true,
+        authFailureOrSuccessOption: none(),
+      );
+
+  factory AuthState.finishLogin(Either<AuthFailure, Unit> result) => AuthState(
+        isSubmitting: false,
+        authFailureOrSuccessOption: optionOf(result),
+      );
 }

@@ -16,9 +16,11 @@ dependencies:
   
   bottom_navy_bar: ^6.0.0
   built_collection: ^5.1.0
+  cached_network_image: ^3.1.0
   cupertino_icons: ^1.0.2
   dartz: ^0.10.0-nullsafety.2
   date_format: ^2.0.2
+  flash: ^2.0.1
   flutter:
     sdk: flutter
     
@@ -30,6 +32,7 @@ dependencies:
   redux: ^5.0.0 
   redux_epics: ^0.15.0
   rxdart: ^0.26.0
+  shimmer: ^2.0.0
   url_launcher: ^6.0.9
 
   #cloud_firestore: "^2.4.0"

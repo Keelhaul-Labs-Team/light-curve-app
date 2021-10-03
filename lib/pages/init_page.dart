@@ -1,6 +1,8 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:light_curve_app/pages/widgets/avatar_cache_image.dart';
 
+import 'auth/container/container_avatar.dart';
 import 'publish_page/container/container_publish_page.dart';
 
 class InitPage extends StatefulWidget {
@@ -34,6 +36,9 @@ class _InitPageState extends State<InitPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Light Curve'),
+        actions: const [
+          AvatarUser(),
+        ],
         //   backgroundColor: primaryColor,
       ),
       body: SizedBox.expand(

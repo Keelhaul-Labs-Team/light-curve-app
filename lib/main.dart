@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:light_curve_app/pages/init_page.dart';
+import 'package:light_curve_app/redux/middleware/auth_middleware.dart';
 import 'package:light_curve_app/redux/middleware/epics_middleware.dart';
 import 'package:light_curve_app/redux/reducers/app_reducer.dart';
 import 'package:light_curve_app/redux/state/app_state.dart';
@@ -8,12 +9,22 @@ import 'package:redux/redux.dart';
 
 import 'package:redux_epics/redux_epics.dart';
 
+import 'features/auth/Infraestructure/mock_auth_repository.dart';
+import 'features/auth/application/login_google.dart';
+import 'features/auth/application/sign_out.dart';
+
 void main() {
   runApp(LightCurveApp(
     store: Store<AppState>(
       appReducer,
-      initialState: AppState.initial(isLogged: false),
-      middleware: [EpicMiddleware(getEpicMiddleware())],
+      initialState: AppState.initial(),
+      middleware: [
+        ...createAuthMiddlewares(
+          loginWithGoogle: LoginWithGoogle(FakeSocialRepository()),
+          signOutApp: const SignOut(),
+        ),
+        EpicMiddleware(getEpicMiddleware())
+      ],
     ),
   ));
 }
@@ -31,8 +42,9 @@ class LightCurveApp extends StatelessWidget {
         themeMode: ThemeMode.light,
         darkTheme: ThemeData.dark().copyWith(primaryColor: Colors.green),
         theme: ThemeData(
-          primarySwatch: Colors.purple,
-          primaryColor: Colors.purple,
+          primarySwatch: Colors.blueGrey,
+          primaryColor: Colors.blueGrey,
+          errorColor: const Color(0xFFe84545),
         ),
         home: const InitPage(),
       ),

@@ -19,44 +19,13 @@ class _$PublishStateTearOff {
   _PublishState call() {
     return _PublishState();
   }
-
-  NotLogged notLogged() {
-    return const NotLogged();
-  }
 }
 
 /// @nodoc
 const $PublishState = _$PublishStateTearOff();
 
 /// @nodoc
-mixin _$PublishState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function() $default, {
-    required TResult Function() notLogged,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function()? $default, {
-    TResult Function()? notLogged,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PublishState value) $default, {
-    required TResult Function(NotLogged value) notLogged,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PublishState value)? $default, {
-    TResult Function(NotLogged value)? notLogged,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-}
+mixin _$PublishState {}
 
 /// @nodoc
 abstract class $PublishStateCopyWith<$Res> {
@@ -109,135 +78,8 @@ class _$_PublishState implements _PublishState {
 
   @override
   int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function() $default, {
-    required TResult Function() notLogged,
-  }) {
-    return $default();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function()? $default, {
-    TResult Function()? notLogged,
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PublishState value) $default, {
-    required TResult Function(NotLogged value) notLogged,
-  }) {
-    return $default(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PublishState value)? $default, {
-    TResult Function(NotLogged value)? notLogged,
-    required TResult orElse(),
-  }) {
-    if ($default != null) {
-      return $default(this);
-    }
-    return orElse();
-  }
 }
 
 abstract class _PublishState implements PublishState {
   factory _PublishState() = _$_PublishState;
-}
-
-/// @nodoc
-abstract class $NotLoggedCopyWith<$Res> {
-  factory $NotLoggedCopyWith(NotLogged value, $Res Function(NotLogged) then) =
-      _$NotLoggedCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class _$NotLoggedCopyWithImpl<$Res> extends _$PublishStateCopyWithImpl<$Res>
-    implements $NotLoggedCopyWith<$Res> {
-  _$NotLoggedCopyWithImpl(NotLogged _value, $Res Function(NotLogged) _then)
-      : super(_value, (v) => _then(v as NotLogged));
-
-  @override
-  NotLogged get _value => super._value as NotLogged;
-}
-
-/// @nodoc
-
-class _$NotLogged implements NotLogged {
-  const _$NotLogged();
-
-  @override
-  String toString() {
-    return 'PublishState.notLogged()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) || (other is NotLogged);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function() $default, {
-    required TResult Function() notLogged,
-  }) {
-    return notLogged();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function()? $default, {
-    TResult Function()? notLogged,
-    required TResult orElse(),
-  }) {
-    if (notLogged != null) {
-      return notLogged();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_PublishState value) $default, {
-    required TResult Function(NotLogged value) notLogged,
-  }) {
-    return notLogged(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_PublishState value)? $default, {
-    TResult Function(NotLogged value)? notLogged,
-    required TResult orElse(),
-  }) {
-    if (notLogged != null) {
-      return notLogged(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class NotLogged implements PublishState {
-  const factory NotLogged() = _$NotLogged;
 }
