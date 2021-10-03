@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="app.keelhaul.light_curve_app">
    <application
-        android:label="light_curve_app"
+        android:label="Light Curve"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"
