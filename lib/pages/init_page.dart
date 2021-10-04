@@ -1,6 +1,7 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:light_curve_app/config.dart';
+import 'package:light_curve_app/pages/publish_page/container/container_notification.dart';
 
 import 'auth/container/container_avatar.dart';
 import 'gallery/container/container_gallery.dart';
@@ -45,7 +46,7 @@ class _InitPageState extends State<InitPage> {
           child: Image.asset(AssetsFile.logo),
         ),
         title: const Text('Light Curve'),
-        actions: const [AvatarUser()],
+        actions: const [ContainerNotificationPage(), AvatarUser()],
         //   backgroundColor: primaryColor,
       ),
       body: SizedBox.expand(

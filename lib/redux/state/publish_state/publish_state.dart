@@ -13,7 +13,7 @@ class PublishState with _$PublishState {
     String? chart2,
     required bool isSubmitting,
     required PublishStep publishStep,
-    required Option<Either<PublishFailure, Unit>> publishFailureOrSuccessOption,
+    required Option<Either<PublishFailure, String>> publishFailureOrSuccessOption,
   }) = _PublishState;
 
   factory PublishState.initial() => PublishState(

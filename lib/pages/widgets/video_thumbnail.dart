@@ -23,11 +23,11 @@ class VideoThumbnail extends StatelessWidget {
         child: Container(
           decoration: BoxDecoration(
               borderRadius: const BorderRadius.all(Radius.circular(4)),
-              color: Colors.blueGrey,
+              color: Colors.black,
               image: DecorationImage(
                 image: imageProvider, // FileImage(File(thumbnail ?? '')),
                 onError: (exception, stackTrace) => onError?.call(),
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
               )),
           child: LayoutBuilder(builder: (context, constraints) {
             return Stack(

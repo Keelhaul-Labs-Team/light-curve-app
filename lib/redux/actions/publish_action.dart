@@ -9,3 +9,7 @@ class CalculatedVideoAction {
 class PublicateVideoAction {
   const PublicateVideoAction();
 }
+
+class BackToInitAction {
+  const BackToInitAction();
+}

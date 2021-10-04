@@ -18,7 +18,7 @@ class FirebaseVideosRepository implements IVideosRepository {
   @override
   Stream<List<VideoDto>> $videosNetwork() {
     return _firestore
-        .collection('video_gallery')
+        .collection('videos_home')
         .orderBy('timestamp', descending: true)
         .snapshots()
         .map((docs) => docs.docs)

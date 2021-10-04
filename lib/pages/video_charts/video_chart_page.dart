@@ -28,11 +28,14 @@ class VideoChart extends StatelessWidget {
                 errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
             ),
+
+            /*   Padding(
+              padding: const EdgeInsets.all(16.0),
             CachedNetworkImage(
               imageUrl: video.chart2,
               placeholder: (context, url) => const CircularProgressIndicator(),
               errorWidget: (context, url, error) => const Icon(Icons.error),
-            ),
+            ),), */
           ],
         ),
       ),

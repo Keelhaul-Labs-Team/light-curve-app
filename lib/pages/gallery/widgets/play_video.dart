@@ -56,7 +56,11 @@ class _PlatVideoState extends State<PlayVideo> {
           ? Container(
               color: Colors.black,
               // aspectRatio: _controller.value.aspectRatio,
-              child: Center(child: VideoPlayer(_controller)),
+              child: Center(
+                  child: AspectRatio(
+                aspectRatio: _controller.value.aspectRatio,
+                child: VideoPlayer(_controller),
+              )),
             )
           : VideoThumbnail(
               thumbnail: widget.video.thumbnail,

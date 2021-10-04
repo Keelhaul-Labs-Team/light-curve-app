@@ -43,7 +43,7 @@ MiddlewareAct<AppState, LoadVideoAction> getLoadVideoMiddleware() {
     next(UpdatePublishStateAction(store.state.publishState.copyWith(
       isSubmitting: false,
       publishStep: result.isRight() ? const PublishStep.loaded() : const PublishStep.init(),
-      publishFailureOrSuccessOption: optionOf(result.map((r) => unit)),
+      publishFailureOrSuccessOption: optionOf(result.map((r) => 'Se cargó el video')),
     )));
   };
 }
@@ -67,7 +67,7 @@ MiddlewareAct<AppState, CalculatedVideoAction> getCalculatedMiddleware() {
     next(UpdatePublishStateAction(store.state.publishState.copyWith(
       isSubmitting: false,
       publishStep: result.isRight() ? const PublishStep.calculated() : const PublishStep.loaded(),
-      publishFailureOrSuccessOption: optionOf(result.map((r) => unit)),
+      publishFailureOrSuccessOption: optionOf(result.map((r) => 'Se calculó con éxito')),
     )));
   };
 }
@@ -97,7 +97,7 @@ MiddlewareAct<AppState, PublicateVideoAction> getPublicatedMiddleware(FirebaseFi
       next(UpdatePublishStateAction(store.state.publishState.copyWith(
         isSubmitting: false,
         publishStep: result.isRight() ? const PublishStep.init() : const PublishStep.calculated(),
-        publishFailureOrSuccessOption: optionOf(result),
+        publishFailureOrSuccessOption: optionOf(result.map((r) => 'Se publicó el video')),
       )));
     }, notLogged: (_) {}, error: (_) {});
   };
@@ -143,6 +143,7 @@ Future<Either<PublishFailure, Unit>> publicateVideo({
 }
 
 Future<Either<PublishFailure, Charts>> getCharts() async {
+  await Future.delayed(const Duration(seconds: 2));
   return right(Charts(
       'https://firebasestorage.googleapis.com/v0/b/proyect-1-271bc.appspot.com/o/Mock%2Fmock_chart_1.jpg?alt=media&token=94e314d9-5506-4956-94cb-6d108eacb967',
       'https://firebasestorage.googleapis.com/v0/b/proyect-1-271bc.appspot.com/o/Mock%2Fmock_chart_2.png?alt=media&token=0f50a0c8-a6f6-436a-b2f9-57aae68d1708'));

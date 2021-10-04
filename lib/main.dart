@@ -8,6 +8,7 @@ import 'package:light_curve_app/pages/init_page.dart';
 import 'package:light_curve_app/redux/actions/video_actions.dart';
 import 'package:light_curve_app/redux/middleware/auth_middleware.dart';
 import 'package:light_curve_app/redux/middleware/epics_middleware.dart';
+import 'package:light_curve_app/redux/middleware/publish_middleware.dart';
 import 'package:light_curve_app/redux/reducers/app_reducer.dart';
 import 'package:light_curve_app/redux/state/app_state.dart';
 import 'package:path_provider/path_provider.dart';
@@ -26,12 +27,12 @@ late String applicationDocumentsDirectory;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  applicationDocumentsDirectory = (await getExternalStorageDirectory())!.path;
+  applicationDocumentsDirectory = (await getApplicationDocumentsDirectory()).path;
   final firebaseAuth = FirebaseAuth.instance;
   final googleSignIn = GoogleSignIn();
   final firestore = FirebaseFirestore.instance;
   final authRepository = FirebaseAuthSocialRepository(firebaseAuth, googleSignIn);
-  final fakeVideoRepository = MockVideosRepository();
+  //final fakeVideoRepository = MockVideosRepository();
   final videoExampleRepository = FirebaseVideosRepository(firestore);
 
   runApp(LightCurveApp(
@@ -43,9 +44,10 @@ Future<void> main() async {
           loginWithGoogle: LoginWithGoogle(authRepository),
           signOutApp: SignOut(authRepository),
         ),
+        ...createPublishMiddlewares(firestore),
         EpicMiddleware(getEpicMiddleware(
           videosExampleRepository: videoExampleRepository,
-          videosUserRepository: fakeVideoRepository,
+          videosUserRepository: videoExampleRepository,
         ))
       ],
     ),

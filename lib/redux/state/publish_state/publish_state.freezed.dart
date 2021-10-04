@@ -23,7 +23,7 @@ class _$PublishStateTearOff {
       String? chart2,
       required bool isSubmitting,
       required PublishStep publishStep,
-      required Option<Either<PublishFailure, Unit>>
+      required Option<Either<PublishFailure, String>>
           publishFailureOrSuccessOption}) {
     return _PublishState(
       pathVideo: pathVideo,
@@ -48,7 +48,7 @@ mixin _$PublishState {
   String? get chart2 => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
   PublishStep get publishStep => throw _privateConstructorUsedError;
-  Option<Either<PublishFailure, Unit>> get publishFailureOrSuccessOption =>
+  Option<Either<PublishFailure, String>> get publishFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -68,7 +68,7 @@ abstract class $PublishStateCopyWith<$Res> {
       String? chart2,
       bool isSubmitting,
       PublishStep publishStep,
-      Option<Either<PublishFailure, Unit>> publishFailureOrSuccessOption});
+      Option<Either<PublishFailure, String>> publishFailureOrSuccessOption});
 
   $PublishStepCopyWith<$Res> get publishStep;
 }
@@ -119,7 +119,7 @@ class _$PublishStateCopyWithImpl<$Res> implements $PublishStateCopyWith<$Res> {
       publishFailureOrSuccessOption: publishFailureOrSuccessOption == freezed
           ? _value.publishFailureOrSuccessOption
           : publishFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<PublishFailure, Unit>>,
+              as Option<Either<PublishFailure, String>>,
     ));
   }
 
@@ -145,7 +145,7 @@ abstract class _$PublishStateCopyWith<$Res>
       String? chart2,
       bool isSubmitting,
       PublishStep publishStep,
-      Option<Either<PublishFailure, Unit>> publishFailureOrSuccessOption});
+      Option<Either<PublishFailure, String>> publishFailureOrSuccessOption});
 
   @override
   $PublishStepCopyWith<$Res> get publishStep;
@@ -199,7 +199,7 @@ class __$PublishStateCopyWithImpl<$Res> extends _$PublishStateCopyWithImpl<$Res>
       publishFailureOrSuccessOption: publishFailureOrSuccessOption == freezed
           ? _value.publishFailureOrSuccessOption
           : publishFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<PublishFailure, Unit>>,
+              as Option<Either<PublishFailure, String>>,
     ));
   }
 }
@@ -229,7 +229,7 @@ class _$_PublishState implements _PublishState {
   @override
   final PublishStep publishStep;
   @override
-  final Option<Either<PublishFailure, Unit>> publishFailureOrSuccessOption;
+  final Option<Either<PublishFailure, String>> publishFailureOrSuccessOption;
 
   @override
   String toString() {
@@ -288,7 +288,7 @@ abstract class _PublishState implements PublishState {
       String? chart2,
       required bool isSubmitting,
       required PublishStep publishStep,
-      required Option<Either<PublishFailure, Unit>>
+      required Option<Either<PublishFailure, String>>
           publishFailureOrSuccessOption}) = _$_PublishState;
 
   @override
@@ -304,7 +304,7 @@ abstract class _PublishState implements PublishState {
   @override
   PublishStep get publishStep => throw _privateConstructorUsedError;
   @override
-  Option<Either<PublishFailure, Unit>> get publishFailureOrSuccessOption =>
+  Option<Either<PublishFailure, String>> get publishFailureOrSuccessOption =>
       throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
