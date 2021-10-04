@@ -46,13 +46,13 @@ class CardVideoHome extends StatelessWidget {
             urlPath: video.photoUrlUser,
           ),
           title: Text(video.title),
-          subtitle: Text(_date),
+          subtitle: Text('Subido el $_date.'),
         )
       ],
     );
   }
 
   String get _date => formatDate(
-      DateTime.fromMillisecondsSinceEpoch(video.timestamp), [dd, ' de ', MM, ' a las ', hh, ':', nn, ' ', am],
+      DateTime.fromMillisecondsSinceEpoch(video.timestamp), [dd, ' de ', M, ' a las ', hh, ':', nn, ' ', am],
       locale: const SpanishDateLocale());
 }

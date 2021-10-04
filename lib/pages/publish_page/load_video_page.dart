@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:light_curve_app/config.dart';
@@ -23,5 +25,9 @@ class LoadVideoPage extends StatelessWidget {
         )
       ],
     );
+  }
+
+  Image imageFromBase64String(String base64String) {
+    return Image.memory(base64Decode(base64String));
   }
 }

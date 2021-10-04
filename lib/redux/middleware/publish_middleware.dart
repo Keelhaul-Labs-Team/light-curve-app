@@ -57,7 +57,9 @@ MiddlewareAct<AppState, CalculatedVideoAction> getCalculatedMiddleware() {
       publishFailureOrSuccessOption: none(),
     )));
 
-    final result = await getCharts();
+    final result = await getCharts(
+      store.state.publishState.pathVideo!,
+    );
 
     result.forEach((charts) => next(UpdatePublishStateAction(store.state.publishState.copyWith(
           chart1: charts.chart1,
@@ -142,7 +144,7 @@ Future<Either<PublishFailure, Unit>> publicateVideo({
   }
 }
 
-Future<Either<PublishFailure, Charts>> getCharts() async {
+Future<Either<PublishFailure, Charts>> getCharts(String pathVideo) async {
   await Future.delayed(const Duration(seconds: 2));
   return right(Charts(
       'https://firebasestorage.googleapis.com/v0/b/proyect-1-271bc.appspot.com/o/Mock%2Fmock_chart_1.jpg?alt=media&token=94e314d9-5506-4956-94cb-6d108eacb967',

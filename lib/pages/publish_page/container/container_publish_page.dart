@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:light_curve_app/pages/auth/container/container_auth_page.dart';
 import 'package:light_curve_app/redux/state/app_state.dart';
@@ -15,6 +16,20 @@ class ContainerPublishPage extends StatelessWidget {
     return StoreConnector<AppState, AppState>(
       distinct: true,
       converter: (store) => store.state,
+      onInit: (_) {
+        SystemChrome.setPreferredOrientations([
+          DeviceOrientation.portraitUp,
+          DeviceOrientation.portraitDown,
+        ]);
+      },
+      onDispose: (_) {
+        SystemChrome.setPreferredOrientations([
+          DeviceOrientation.portraitUp,
+          DeviceOrientation.landscapeLeft,
+          DeviceOrientation.landscapeRight,
+          DeviceOrientation.portraitDown,
+        ]);
+      },
       builder: (context, state) {
         return state.userState is NotLogged
             ? const ContainerAuthPage()

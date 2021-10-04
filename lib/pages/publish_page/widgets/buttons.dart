@@ -14,8 +14,8 @@ class PrimaryButton extends StatelessWidget {
     return ElevatedButton(
         onPressed: onPress,
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(
-              isSubmitting ? Theme.of(context).canvasColor : Theme.of(context).primaryColor),
+          backgroundColor:
+              MaterialStateProperty.all(isSubmitting ? Colors.grey[200] : Theme.of(context).primaryColor),
           padding: MaterialStateProperty.all(const EdgeInsets.symmetric(vertical: 16)),
         ),
         child: Container(

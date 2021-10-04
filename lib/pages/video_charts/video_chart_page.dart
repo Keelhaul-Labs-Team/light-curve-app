@@ -1,7 +1,15 @@
+import 'dart:io';
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:light_curve_app/features/videos/domain/video_dto.dart';
+import 'package:light_curve_app/main.dart';
 import 'package:light_curve_app/pages/auth/container/container_avatar.dart';
+
+import 'package:flutter/foundation.dart';
+import 'package:light_curve_app/pages/auth/widget/show_snackbar.dart';
+import 'package:path/path.dart' as path;
+import 'package:share_plus/share_plus.dart';
 
 class VideoChart extends StatelessWidget {
   final VideoDto video;
@@ -12,7 +20,29 @@ class VideoChart extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Detalles'),
-        actions: const [AvatarUser()],
+        actions: [
+          IconButton(
+              onPressed: () async {
+                try {
+                  final request = await HttpClient().getUrl(Uri.parse(video.chart1));
+
+                  final response = await request.close();
+
+                  final bytes = await consolidateHttpClientResponseBytes(response);
+                  final temporaryPath = applicationDocumentsDirectory;
+                  final fileName =
+                      path.join(temporaryPath, 'Ligth_curve_${DateTime.now().millisecondsSinceEpoch}.jpg');
+                  File(fileName).writeAsBytesSync(bytes);
+
+                  await Share.shareFiles([fileName],
+                      mimeTypes: ['image/jpg'], text: 'From Light Curve', subject: path.basename(fileName));
+                } catch (_) {
+                  showSnackBar('Revise su conexión', context, icon: Icons.wifi);
+                }
+              },
+              icon: const Icon(Icons.share)),
+          const AvatarUser()
+        ],
         //   backgroundColor: primaryColor,
       ),
       body: Center(

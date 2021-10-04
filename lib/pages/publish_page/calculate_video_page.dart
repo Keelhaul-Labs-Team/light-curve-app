@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -64,16 +65,29 @@ class CalculateVideoPage extends StatelessWidget {
             }),
           ),
         ),
-        PrimaryButton(
-          isSubmitting: isSubmitting,
-          onPress: () => StoreProvider.of<AppState>(context).dispatch(const CalculatedVideoAction()),
-          maintext: isSubmitting ? 'Calculando...' : 'Calcular',
-        ),
+        Text(_getFileSize(2), style: const TextStyle(fontSize: 18)),
+        if (bytes > 20 * 1024 * 1024)
+          Text('Máximo 20 Mb de tamaño', style: TextStyle(color: Theme.of(context).errorColor, fontSize: 18))
+        else
+          PrimaryButton(
+            isSubmitting: isSubmitting,
+            onPress: () => StoreProvider.of<AppState>(context).dispatch(const CalculatedVideoAction()),
+            maintext: isSubmitting ? 'Calculando...' : 'Calcular',
+          ),
         SecundaryButton(
           onPress: () => StoreProvider.of<AppState>(context).dispatch(const BackToInitAction()),
           maintext: 'Volver',
         )
       ],
     );
+  }
+
+  int get bytes => File(pathVideo).lengthSync();
+
+  String _getFileSize(int decimals) {
+    if (bytes <= 0) return '0 B';
+    const suffixes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+    final i = (log(bytes) / log(1024)).floor();
+    return '${(bytes / pow(1024, i)).toStringAsFixed(decimals)} ${suffixes[i]}';
   }
 }

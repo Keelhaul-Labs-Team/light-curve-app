@@ -27,6 +27,7 @@ class _InitPageState extends State<InitPage> {
   void initState() {
     super.initState();
     widget.initStreams();
+
     _pageController = PageController();
   }
 
