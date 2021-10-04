@@ -1,6 +1,6 @@
 # Light Curve App
 
-Proyecto de Space apps challenge - [DESCARGAR DEMO](https://drive.google.com/drive/folders/180jt-TSqPQElNoHVzL3pRDzG1T1nJypI?usp=sharing)
+Proyecto de Space apps challenge - [DESCARGAR DEMO](https://drive.google.com/drive/folders/1ipj-1uJY5KlGBdkGCyvn3WQgk6BAgihS?usp=sharing)
 
 <img src="assets/capture_1.jpg" alt="drawing" width="260"/>
 <img src="assets/capture_2.jpg" alt="drawing" width="260"/>

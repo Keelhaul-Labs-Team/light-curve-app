@@ -3,7 +3,6 @@ import 'package:light_curve_app/config.dart';
 import 'package:light_curve_app/features/videos/domain/video_dto.dart';
 import 'package:light_curve_app/pages/gallery/widgets/play_video.dart';
 import 'package:light_curve_app/pages/video_charts/video_chart_page.dart';
-import 'package:light_curve_app/pages/widgets/video_thumbnail.dart';
 
 class CardVideoGallery extends StatelessWidget {
   final VideoDto video;
@@ -25,7 +24,7 @@ class CardVideoGallery extends StatelessWidget {
                 child: Container(
                   constraints: const BoxConstraints(maxWidth: 400),
                   height: 150,
-                  color: Colors.grey[300],
+                  color: Colors.grey[200],
                   child: PlayVideo(video: video),
                 ),
               ),

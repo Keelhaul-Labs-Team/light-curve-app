@@ -20,6 +20,7 @@ class PublishPage extends StatelessWidget {
         Container(
           color: Colors.grey[300],
           height: 250,
+          width: double.infinity,
           margin: const EdgeInsets.all(16.0),
           child: CachedNetworkImage(
             imageUrl: chart1,

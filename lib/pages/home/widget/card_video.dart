@@ -1,5 +1,6 @@
 import 'package:date_format/date_format.dart';
 import 'package:flutter/material.dart';
+import 'package:light_curve_app/config.dart';
 import 'package:light_curve_app/features/videos/domain/video_dto.dart';
 import 'package:light_curve_app/pages/gallery/widgets/play_video.dart';
 import 'package:light_curve_app/pages/video_charts/video_chart_page.dart';
@@ -25,7 +26,7 @@ class CardVideoHome extends StatelessWidget {
                 child: Container(
                   constraints: const BoxConstraints(maxWidth: 400),
                   height: 150,
-                  color: Colors.grey[300],
+                  color: baseColor,
                   child: PlayVideo(video: video),
                 ),
               ),
