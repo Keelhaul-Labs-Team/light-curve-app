@@ -10,11 +10,17 @@ class ContainerPublishPage extends StatelessWidget {
   const ContainerPublishPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return StoreConnector<AppState, UserState>(
+    return StoreConnector<AppState, AppState>(
       distinct: true,
-      converter: (store) => store.state.userState,
-      builder: (context, userState) {
-        return userState is NotLogged ? const ContainerAuthPage() : const PublishPage();
+      converter: (store) => store.state,
+      builder: (context, state) {
+        return state.userState is NotLogged
+            ? const ContainerAuthPage()
+            : state.publishState.publishStep.when(
+                init: () => const PublishPage(),
+                loaded: () => const PublishPage(),
+                calculated: () => const PublishPage(),
+              );
       },
     );
   }

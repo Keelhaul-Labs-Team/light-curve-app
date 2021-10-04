@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:light_curve_app/pages/widgets/avatar_cache_image.dart';
 import 'package:light_curve_app/redux/actions/auth_actions.dart';
 import 'package:light_curve_app/redux/state/app_state.dart';
 
@@ -39,10 +40,9 @@ class AlertDialogProfile extends StatelessWidget {
   Widget getContent(Widget button) => Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          CircleAvatar(
-            backgroundColor: Colors.white,
+          AvatarCacheImage(
+            urlPath: photoUrl,
             radius: 45,
-            child: photoUrl == null ? const Icon(Icons.person) : Image.network(photoUrl!),
           ),
           const SizedBox(height: 16),
           Text(

@@ -9,9 +9,9 @@ class FakeSocialRepository implements IAuthSocialRepository {
     await Future.delayed(const Duration(seconds: 3));
 
     final res = <Either<AuthFailure, UserState>>[
-      /*   const Left(AuthFailure.accountDisabled()),
+      const Left(AuthFailure.accountDisabled()),
       const Left(AuthFailure.serverError(0)),
-      const Left(AuthFailure.internalError()), */
+      const Left(AuthFailure.internalError()),
       Right(UserState(
           email: 'pepito@gmail.com',
           name: 'Pepito',

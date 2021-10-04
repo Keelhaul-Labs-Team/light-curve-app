@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:light_curve_app/config.dart';
+
+import 'package:light_curve_app/pages/auth/widget/button_login.dart';
 
 class AuthPage extends StatelessWidget {
   final void Function() loginWithGoogle;
@@ -11,11 +14,16 @@ class AuthPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: ElevatedButton(
-        onPressed: isSubmitting ? null : loginWithGoogle,
-        child: const Text('Loguearse con Google'),
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        const Text('Inicia Sesión', style: TextStyle(fontSize: 35)),
+        ButtonLogin(
+          isSubmitting: isSubmitting,
+          loginWithGoogle: loginWithGoogle,
+        ),
+        Image.asset(AssetsFile.astronomo)
+      ],
     );
   }
 }

@@ -27,7 +27,7 @@ MiddlewareAct<AppState, LoginWithGoogleAction> getLoginWithGoogleMiddleware(Logi
 
     result.forEach((userState) => next(UpdateUserStateAction(userState)));
 
-    next(UpdateAuthStateAction(AuthState.finishLogin(result.map((r) => unit))));
+    next(UpdateAuthStateAction(AuthState.finishLogin(result.map((_) => unit))));
   };
 }
 

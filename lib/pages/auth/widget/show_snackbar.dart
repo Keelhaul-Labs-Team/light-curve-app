@@ -5,7 +5,7 @@ void showSnackBar(String message, BuildContext context, {required IconData icon,
   final backgroundColor = color ?? Theme.of(context).errorColor;
   showFlash(
     context: context,
-    duration: const Duration(seconds: 4),
+    duration: const Duration(seconds: 3),
     builder: (context, controller) {
       return Flash.bar(
         controller: controller,

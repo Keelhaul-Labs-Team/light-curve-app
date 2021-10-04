@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
@@ -29,10 +28,12 @@ class AvatarUser extends StatelessWidget {
                       );
                     },
                   ),
-              icon: CircleAvatar(
-                backgroundColor: Colors.white,
-                radius: 45,
-                child: value.photoUrl == null ? const Icon(Icons.person) : Image.network(value.photoUrl!),
+              icon: Center(
+                child: AvatarCacheImage(
+                  urlPath: value.photoUrl,
+                  radius: 22,
+                  //  child: value.photoUrl == null ? const Icon(Icons.person) : Image.network(value.photoUrl!),
+                ),
               )),
           notLogged: (_) => const SizedBox(),
           error: (_) => const SizedBox(),

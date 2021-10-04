@@ -11,9 +11,9 @@ abstract class IAuthSocialRepository {
 }
 
 mixin ErrorCode {
-  Either<AuthFailure, Unit> getAuthFailure(dynamic e) {
-    if (e.code == 'user-disabled') return left(const AuthFailure.accountDisabled());
+  AuthFailure getAuthFailure(dynamic e) {
+    if (e.code == 'user-disabled') return const AuthFailure.accountDisabled();
 
-    return left(AuthFailure.serverError(e as Object));
+    return AuthFailure.serverError(e as Object);
   }
 }

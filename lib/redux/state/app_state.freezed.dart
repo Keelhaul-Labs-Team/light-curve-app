@@ -19,11 +19,15 @@ class _$AppStateTearOff {
   _AppState call(
       {required AuthState authState,
       required UserState userState,
-      required PublishState publishState}) {
+      required PublishState publishState,
+      required BuiltList<VideoDto> videosUsers,
+      required BuiltList<VideoDto> videoExamples}) {
     return _AppState(
       authState: authState,
       userState: userState,
       publishState: publishState,
+      videosUsers: videosUsers,
+      videoExamples: videoExamples,
     );
   }
 }
@@ -36,6 +40,8 @@ mixin _$AppState {
   AuthState get authState => throw _privateConstructorUsedError;
   UserState get userState => throw _privateConstructorUsedError;
   PublishState get publishState => throw _privateConstructorUsedError;
+  BuiltList<VideoDto> get videosUsers => throw _privateConstructorUsedError;
+  BuiltList<VideoDto> get videoExamples => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AppStateCopyWith<AppState> get copyWith =>
@@ -47,7 +53,11 @@ abstract class $AppStateCopyWith<$Res> {
   factory $AppStateCopyWith(AppState value, $Res Function(AppState) then) =
       _$AppStateCopyWithImpl<$Res>;
   $Res call(
-      {AuthState authState, UserState userState, PublishState publishState});
+      {AuthState authState,
+      UserState userState,
+      PublishState publishState,
+      BuiltList<VideoDto> videosUsers,
+      BuiltList<VideoDto> videoExamples});
 
   $AuthStateCopyWith<$Res> get authState;
   $UserStateCopyWith<$Res> get userState;
@@ -67,6 +77,8 @@ class _$AppStateCopyWithImpl<$Res> implements $AppStateCopyWith<$Res> {
     Object? authState = freezed,
     Object? userState = freezed,
     Object? publishState = freezed,
+    Object? videosUsers = freezed,
+    Object? videoExamples = freezed,
   }) {
     return _then(_value.copyWith(
       authState: authState == freezed
@@ -81,6 +93,14 @@ class _$AppStateCopyWithImpl<$Res> implements $AppStateCopyWith<$Res> {
           ? _value.publishState
           : publishState // ignore: cast_nullable_to_non_nullable
               as PublishState,
+      videosUsers: videosUsers == freezed
+          ? _value.videosUsers
+          : videosUsers // ignore: cast_nullable_to_non_nullable
+              as BuiltList<VideoDto>,
+      videoExamples: videoExamples == freezed
+          ? _value.videoExamples
+          : videoExamples // ignore: cast_nullable_to_non_nullable
+              as BuiltList<VideoDto>,
     ));
   }
 
@@ -112,7 +132,11 @@ abstract class _$AppStateCopyWith<$Res> implements $AppStateCopyWith<$Res> {
       __$AppStateCopyWithImpl<$Res>;
   @override
   $Res call(
-      {AuthState authState, UserState userState, PublishState publishState});
+      {AuthState authState,
+      UserState userState,
+      PublishState publishState,
+      BuiltList<VideoDto> videosUsers,
+      BuiltList<VideoDto> videoExamples});
 
   @override
   $AuthStateCopyWith<$Res> get authState;
@@ -136,6 +160,8 @@ class __$AppStateCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
     Object? authState = freezed,
     Object? userState = freezed,
     Object? publishState = freezed,
+    Object? videosUsers = freezed,
+    Object? videoExamples = freezed,
   }) {
     return _then(_AppState(
       authState: authState == freezed
@@ -150,6 +176,14 @@ class __$AppStateCopyWithImpl<$Res> extends _$AppStateCopyWithImpl<$Res>
           ? _value.publishState
           : publishState // ignore: cast_nullable_to_non_nullable
               as PublishState,
+      videosUsers: videosUsers == freezed
+          ? _value.videosUsers
+          : videosUsers // ignore: cast_nullable_to_non_nullable
+              as BuiltList<VideoDto>,
+      videoExamples: videoExamples == freezed
+          ? _value.videoExamples
+          : videoExamples // ignore: cast_nullable_to_non_nullable
+              as BuiltList<VideoDto>,
     ));
   }
 }
@@ -160,7 +194,9 @@ class _$_AppState implements _AppState {
   _$_AppState(
       {required this.authState,
       required this.userState,
-      required this.publishState});
+      required this.publishState,
+      required this.videosUsers,
+      required this.videoExamples});
 
   @override
   final AuthState authState;
@@ -168,10 +204,14 @@ class _$_AppState implements _AppState {
   final UserState userState;
   @override
   final PublishState publishState;
+  @override
+  final BuiltList<VideoDto> videosUsers;
+  @override
+  final BuiltList<VideoDto> videoExamples;
 
   @override
   String toString() {
-    return 'AppState(authState: $authState, userState: $userState, publishState: $publishState)';
+    return 'AppState(authState: $authState, userState: $userState, publishState: $publishState, videosUsers: $videosUsers, videoExamples: $videoExamples)';
   }
 
   @override
@@ -186,7 +226,13 @@ class _$_AppState implements _AppState {
                     .equals(other.userState, userState)) &&
             (identical(other.publishState, publishState) ||
                 const DeepCollectionEquality()
-                    .equals(other.publishState, publishState)));
+                    .equals(other.publishState, publishState)) &&
+            (identical(other.videosUsers, videosUsers) ||
+                const DeepCollectionEquality()
+                    .equals(other.videosUsers, videosUsers)) &&
+            (identical(other.videoExamples, videoExamples) ||
+                const DeepCollectionEquality()
+                    .equals(other.videoExamples, videoExamples)));
   }
 
   @override
@@ -194,7 +240,9 @@ class _$_AppState implements _AppState {
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(authState) ^
       const DeepCollectionEquality().hash(userState) ^
-      const DeepCollectionEquality().hash(publishState);
+      const DeepCollectionEquality().hash(publishState) ^
+      const DeepCollectionEquality().hash(videosUsers) ^
+      const DeepCollectionEquality().hash(videoExamples);
 
   @JsonKey(ignore: true)
   @override
@@ -206,7 +254,9 @@ abstract class _AppState implements AppState {
   factory _AppState(
       {required AuthState authState,
       required UserState userState,
-      required PublishState publishState}) = _$_AppState;
+      required PublishState publishState,
+      required BuiltList<VideoDto> videosUsers,
+      required BuiltList<VideoDto> videoExamples}) = _$_AppState;
 
   @override
   AuthState get authState => throw _privateConstructorUsedError;
@@ -214,6 +264,10 @@ abstract class _AppState implements AppState {
   UserState get userState => throw _privateConstructorUsedError;
   @override
   PublishState get publishState => throw _privateConstructorUsedError;
+  @override
+  BuiltList<VideoDto> get videosUsers => throw _privateConstructorUsedError;
+  @override
+  BuiltList<VideoDto> get videoExamples => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$AppStateCopyWith<_AppState> get copyWith =>

@@ -1,7 +1,10 @@
-/* import 'dart:io';
+import 'dart:io';
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:light_curve_app/features/auth/domain/auth_failure.dart';
 import 'package:light_curve_app/features/auth/domain/i_auth_repository.dart';
+import 'package:light_curve_app/redux/state/user_state/user_state.dart';
 
 class FirebaseAuthSocialRepository with ErrorCode implements IAuthSocialRepository {
   final FirebaseAuth _firebaseAuth;
@@ -15,7 +18,7 @@ class FirebaseAuthSocialRepository with ErrorCode implements IAuthSocialReposito
   );
 
   @override
-  Future<Either<AuthFailure, Unit>> signInWithGoogle() async {
+  Future<Either<AuthFailure, UserState>> signInWithGoogle() async {
     //  if (kIsWeb) return left(const AuthFailure.notAvailable());
 
     try {
@@ -29,11 +32,11 @@ class FirebaseAuthSocialRepository with ErrorCode implements IAuthSocialReposito
         idToken: googleAuthentication.idToken,
       );
 
-      final userCredential = await _firebaseAuth.signInWithCredential(authCredential);
+      await _firebaseAuth.signInWithCredential(authCredential);
 
-      return right(unit);
+      return right(getUserState()!);
     } on FirebaseAuthException catch (e) {
-      return getAuthFailure(e);
+      return left(getAuthFailure(e));
     } catch (e) {
       if (e is SocketException) return const Left(AuthFailure.internalError());
       return left(AuthFailure.serverError(e));
@@ -44,5 +47,19 @@ class FirebaseAuthSocialRepository with ErrorCode implements IAuthSocialReposito
   Future<void> signOut() async {
     await Future.wait([_googleSignIn.signOut(), _firebaseAuth.signOut()]);
   }
+
+  @override
+  UserState? getUserState() {
+    try {
+      final currentUser = _firebaseAuth.currentUser;
+      if (currentUser == null) return null;
+      return UserState(
+          email: currentUser.email!,
+          uid: currentUser.uid,
+          name: currentUser.displayName,
+          photoUrl: currentUser.photoURL);
+    } catch (e) {
+      return UserState.error(e);
+    }
+  }
 }
- */

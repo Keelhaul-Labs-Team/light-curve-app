@@ -99,7 +99,7 @@ class AvatarCacheImage extends StatelessWidget {
   static final _baseColor =
       const Color(0xffE3F2FD).mix(const Color(0xffFAFAFA), .4).mix(const Color(0xffE9EBEE), .2);
 
-  static const _durationShimer = Duration(milliseconds: 500);
+  static const _durationShimer = Duration(milliseconds: 1200);
 
   Widget get _placeholderShimmer => Shimmer.fromColors(
         period: _durationShimer,

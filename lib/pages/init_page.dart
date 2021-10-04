@@ -1,13 +1,17 @@
 import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:light_curve_app/pages/widgets/avatar_cache_image.dart';
+import 'package:light_curve_app/config.dart';
 
 import 'auth/container/container_avatar.dart';
+import 'gallery/container/container_gallery.dart';
+import 'home/container/container_home.dart';
 import 'publish_page/container/container_publish_page.dart';
 
 class InitPage extends StatefulWidget {
+  final void Function() initStreams;
   const InitPage({
     Key? key,
+    required this.initStreams,
   }) : super(key: key);
 
   @override
@@ -21,6 +25,7 @@ class _InitPageState extends State<InitPage> {
   @override
   void initState() {
     super.initState();
+    widget.initStreams();
     _pageController = PageController();
   }
 
@@ -30,15 +35,17 @@ class _InitPageState extends State<InitPage> {
     super.dispose();
   }
 
-  final primaryColor = const Color(0xff4F7BE3);
+  final inactiveColor = Colors.grey[400];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Image.asset(AssetsFile.logo),
+        ),
         title: const Text('Light Curve'),
-        actions: const [
-          AvatarUser(),
-        ],
+        actions: const [AvatarUser()],
         //   backgroundColor: primaryColor,
       ),
       body: SizedBox.expand(
@@ -48,12 +55,20 @@ class _InitPageState extends State<InitPage> {
             setState(() => _currentIndex = index);
           },
           children: const <Widget>[
-            Center(child: Icon(Icons.home)),
+            ContainerHomePage(),
+            /*   Center(
+              child: AvatarCacheImage(
+                radius: 60,
+                urlPath: 'http://via.placeholder.com/350x150',
+              ),
+            ), */
+            /*  CachedNetworkImage(
+              imageUrl: 'http://via.placeholder.com/350x150',
+              placeholder: (context, url) => CircularProgressIndicator(),
+              errorWidget: (context, url, error) => Icon(Icons.error),
+            ), */
             ContainerPublishPage(),
-            Center(child: Icon(Icons.list)),
-            /* ContainerHomePage(),
-            ContainerEmailsSendedPage(),
-            ContainerMessagesPage(), */
+            ContainerGalleryPage(),
           ],
         ),
       ),
@@ -67,18 +82,18 @@ class _InitPageState extends State<InitPage> {
           BottomNavyBarItem(
               title: const Text('Inicio'),
               activeColor: Theme.of(context).primaryColor,
-              inactiveColor: primaryColor,
+              inactiveColor: inactiveColor,
               icon: const Icon(Icons.home)),
           BottomNavyBarItem(
             title: const Text('Publicar'),
-            inactiveColor: primaryColor,
+            inactiveColor: inactiveColor,
             activeColor: Theme.of(context).primaryColor,
             icon: const Icon(Icons.video_call),
           ),
           BottomNavyBarItem(
             title: const Text('Galería'),
             activeColor: Theme.of(context).primaryColor,
-            inactiveColor: primaryColor,
+            inactiveColor: inactiveColor,
             icon: const Icon(Icons.list),
           ),
         ],
