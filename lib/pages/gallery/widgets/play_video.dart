@@ -4,11 +4,11 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 
 import 'package:light_curve_app/features/videos/domain/video_dto.dart';
-import 'package:light_curve_app/main.dart';
+
 import 'package:light_curve_app/pages/widgets/video_thumbnail.dart';
 import 'package:open_file/open_file.dart';
-import 'package:video_player/video_player.dart';
 import 'package:path/path.dart' as p;
+import 'package:video_player/video_player.dart';
 
 class PlayVideo extends StatefulWidget {
   final VideoDto video;
@@ -24,14 +24,15 @@ class _PlatVideoState extends State<PlayVideo> {
   void initState() {
     _controller = VideoPlayerController.network(widget.video.linkUrl)
       ..initialize().then((_) {
+        _controller.setLooping(true);
         // Ensure the first frame is shown after the video is initialized, even before the play button has been pressed.
         setState(() {});
       });
-    _pathOnApp = p.join(
+    /*  _pathOnApp = p.join(
       applicationDocumentsDirectory,
       widget.video.id! + p.extension(widget.video.pathDonwload),
     );
-    _isFileDownloaded = File(_pathOnApp).existsSync();
+    _isFileDownloaded = File(_pathOnApp).existsSync(); */
     super.initState();
   }
 
@@ -51,6 +52,7 @@ class _PlatVideoState extends State<PlayVideo> {
         setState(() {
           _controller.value.isPlaying ? _controller.pause() : _controller.play();
         });
+        if (_isFileDownloaded) {}
       }, // _isFileDownloaded ? _playVideo : _downloadVideo,
       child: _controller.value.isPlaying
           ? Container(
@@ -70,7 +72,7 @@ class _PlatVideoState extends State<PlayVideo> {
     );
   }
 
-  Future<void> _downloadVideo() async {
+  Future<void> downloadVideo() async {
     setState(() => {_isDownloading = true});
 
     try {

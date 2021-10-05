@@ -25,10 +25,10 @@ class AppState with _$AppState {
     required BuiltList<VideoDto> videoExamples,
   }) = _AppState;
 
-  factory AppState.initial({required UserState? userState}) {
+  factory AppState.initial({required UserState userState}) {
     return AppState(
       authState: AuthState.initial(),
-      userState: userState ?? const UserState.notLogged(),
+      userState: userState,
       publishState: PublishState.initial(),
       videoExamples: <VideoDto>[].build(),
       videosUsers: <VideoDto>[].build(),

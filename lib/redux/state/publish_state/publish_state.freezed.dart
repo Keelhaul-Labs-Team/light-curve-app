@@ -18,18 +18,16 @@ class _$PublishStateTearOff {
 
   _PublishState call(
       {String? pathVideo,
-      String? pathThumbnail,
-      String? chart1,
-      String? chart2,
+      Uint8List? thumbnail,
+      Uint8List? chart1,
       required bool isSubmitting,
       required PublishStep publishStep,
-      required Option<Either<PublishFailure, String>>
+      required Option<Either<PublishFailure, PublishSucces>>
           publishFailureOrSuccessOption}) {
     return _PublishState(
       pathVideo: pathVideo,
-      pathThumbnail: pathThumbnail,
+      thumbnail: thumbnail,
       chart1: chart1,
-      chart2: chart2,
       isSubmitting: isSubmitting,
       publishStep: publishStep,
       publishFailureOrSuccessOption: publishFailureOrSuccessOption,
@@ -43,13 +41,12 @@ const $PublishState = _$PublishStateTearOff();
 /// @nodoc
 mixin _$PublishState {
   String? get pathVideo => throw _privateConstructorUsedError;
-  String? get pathThumbnail => throw _privateConstructorUsedError;
-  String? get chart1 => throw _privateConstructorUsedError;
-  String? get chart2 => throw _privateConstructorUsedError;
+  Uint8List? get thumbnail => throw _privateConstructorUsedError;
+  Uint8List? get chart1 => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
   PublishStep get publishStep => throw _privateConstructorUsedError;
-  Option<Either<PublishFailure, String>> get publishFailureOrSuccessOption =>
-      throw _privateConstructorUsedError;
+  Option<Either<PublishFailure, PublishSucces>>
+      get publishFailureOrSuccessOption => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PublishStateCopyWith<PublishState> get copyWith =>
@@ -63,12 +60,12 @@ abstract class $PublishStateCopyWith<$Res> {
       _$PublishStateCopyWithImpl<$Res>;
   $Res call(
       {String? pathVideo,
-      String? pathThumbnail,
-      String? chart1,
-      String? chart2,
+      Uint8List? thumbnail,
+      Uint8List? chart1,
       bool isSubmitting,
       PublishStep publishStep,
-      Option<Either<PublishFailure, String>> publishFailureOrSuccessOption});
+      Option<Either<PublishFailure, PublishSucces>>
+          publishFailureOrSuccessOption});
 
   $PublishStepCopyWith<$Res> get publishStep;
 }
@@ -84,9 +81,8 @@ class _$PublishStateCopyWithImpl<$Res> implements $PublishStateCopyWith<$Res> {
   @override
   $Res call({
     Object? pathVideo = freezed,
-    Object? pathThumbnail = freezed,
+    Object? thumbnail = freezed,
     Object? chart1 = freezed,
-    Object? chart2 = freezed,
     Object? isSubmitting = freezed,
     Object? publishStep = freezed,
     Object? publishFailureOrSuccessOption = freezed,
@@ -96,18 +92,14 @@ class _$PublishStateCopyWithImpl<$Res> implements $PublishStateCopyWith<$Res> {
           ? _value.pathVideo
           : pathVideo // ignore: cast_nullable_to_non_nullable
               as String?,
-      pathThumbnail: pathThumbnail == freezed
-          ? _value.pathThumbnail
-          : pathThumbnail // ignore: cast_nullable_to_non_nullable
-              as String?,
+      thumbnail: thumbnail == freezed
+          ? _value.thumbnail
+          : thumbnail // ignore: cast_nullable_to_non_nullable
+              as Uint8List?,
       chart1: chart1 == freezed
           ? _value.chart1
           : chart1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      chart2: chart2 == freezed
-          ? _value.chart2
-          : chart2 // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Uint8List?,
       isSubmitting: isSubmitting == freezed
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
@@ -119,7 +111,7 @@ class _$PublishStateCopyWithImpl<$Res> implements $PublishStateCopyWith<$Res> {
       publishFailureOrSuccessOption: publishFailureOrSuccessOption == freezed
           ? _value.publishFailureOrSuccessOption
           : publishFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<PublishFailure, String>>,
+              as Option<Either<PublishFailure, PublishSucces>>,
     ));
   }
 
@@ -140,12 +132,12 @@ abstract class _$PublishStateCopyWith<$Res>
   @override
   $Res call(
       {String? pathVideo,
-      String? pathThumbnail,
-      String? chart1,
-      String? chart2,
+      Uint8List? thumbnail,
+      Uint8List? chart1,
       bool isSubmitting,
       PublishStep publishStep,
-      Option<Either<PublishFailure, String>> publishFailureOrSuccessOption});
+      Option<Either<PublishFailure, PublishSucces>>
+          publishFailureOrSuccessOption});
 
   @override
   $PublishStepCopyWith<$Res> get publishStep;
@@ -164,9 +156,8 @@ class __$PublishStateCopyWithImpl<$Res> extends _$PublishStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? pathVideo = freezed,
-    Object? pathThumbnail = freezed,
+    Object? thumbnail = freezed,
     Object? chart1 = freezed,
-    Object? chart2 = freezed,
     Object? isSubmitting = freezed,
     Object? publishStep = freezed,
     Object? publishFailureOrSuccessOption = freezed,
@@ -176,18 +167,14 @@ class __$PublishStateCopyWithImpl<$Res> extends _$PublishStateCopyWithImpl<$Res>
           ? _value.pathVideo
           : pathVideo // ignore: cast_nullable_to_non_nullable
               as String?,
-      pathThumbnail: pathThumbnail == freezed
-          ? _value.pathThumbnail
-          : pathThumbnail // ignore: cast_nullable_to_non_nullable
-              as String?,
+      thumbnail: thumbnail == freezed
+          ? _value.thumbnail
+          : thumbnail // ignore: cast_nullable_to_non_nullable
+              as Uint8List?,
       chart1: chart1 == freezed
           ? _value.chart1
           : chart1 // ignore: cast_nullable_to_non_nullable
-              as String?,
-      chart2: chart2 == freezed
-          ? _value.chart2
-          : chart2 // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Uint8List?,
       isSubmitting: isSubmitting == freezed
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
@@ -199,7 +186,7 @@ class __$PublishStateCopyWithImpl<$Res> extends _$PublishStateCopyWithImpl<$Res>
       publishFailureOrSuccessOption: publishFailureOrSuccessOption == freezed
           ? _value.publishFailureOrSuccessOption
           : publishFailureOrSuccessOption // ignore: cast_nullable_to_non_nullable
-              as Option<Either<PublishFailure, String>>,
+              as Option<Either<PublishFailure, PublishSucces>>,
     ));
   }
 }
@@ -209,9 +196,8 @@ class __$PublishStateCopyWithImpl<$Res> extends _$PublishStateCopyWithImpl<$Res>
 class _$_PublishState implements _PublishState {
   _$_PublishState(
       {this.pathVideo,
-      this.pathThumbnail,
+      this.thumbnail,
       this.chart1,
-      this.chart2,
       required this.isSubmitting,
       required this.publishStep,
       required this.publishFailureOrSuccessOption});
@@ -219,21 +205,20 @@ class _$_PublishState implements _PublishState {
   @override
   final String? pathVideo;
   @override
-  final String? pathThumbnail;
+  final Uint8List? thumbnail;
   @override
-  final String? chart1;
-  @override
-  final String? chart2;
+  final Uint8List? chart1;
   @override
   final bool isSubmitting;
   @override
   final PublishStep publishStep;
   @override
-  final Option<Either<PublishFailure, String>> publishFailureOrSuccessOption;
+  final Option<Either<PublishFailure, PublishSucces>>
+      publishFailureOrSuccessOption;
 
   @override
   String toString() {
-    return 'PublishState(pathVideo: $pathVideo, pathThumbnail: $pathThumbnail, chart1: $chart1, chart2: $chart2, isSubmitting: $isSubmitting, publishStep: $publishStep, publishFailureOrSuccessOption: $publishFailureOrSuccessOption)';
+    return 'PublishState(pathVideo: $pathVideo, thumbnail: $thumbnail, chart1: $chart1, isSubmitting: $isSubmitting, publishStep: $publishStep, publishFailureOrSuccessOption: $publishFailureOrSuccessOption)';
   }
 
   @override
@@ -243,13 +228,11 @@ class _$_PublishState implements _PublishState {
             (identical(other.pathVideo, pathVideo) ||
                 const DeepCollectionEquality()
                     .equals(other.pathVideo, pathVideo)) &&
-            (identical(other.pathThumbnail, pathThumbnail) ||
+            (identical(other.thumbnail, thumbnail) ||
                 const DeepCollectionEquality()
-                    .equals(other.pathThumbnail, pathThumbnail)) &&
+                    .equals(other.thumbnail, thumbnail)) &&
             (identical(other.chart1, chart1) ||
                 const DeepCollectionEquality().equals(other.chart1, chart1)) &&
-            (identical(other.chart2, chart2) ||
-                const DeepCollectionEquality().equals(other.chart2, chart2)) &&
             (identical(other.isSubmitting, isSubmitting) ||
                 const DeepCollectionEquality()
                     .equals(other.isSubmitting, isSubmitting)) &&
@@ -267,9 +250,8 @@ class _$_PublishState implements _PublishState {
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(pathVideo) ^
-      const DeepCollectionEquality().hash(pathThumbnail) ^
+      const DeepCollectionEquality().hash(thumbnail) ^
       const DeepCollectionEquality().hash(chart1) ^
-      const DeepCollectionEquality().hash(chart2) ^
       const DeepCollectionEquality().hash(isSubmitting) ^
       const DeepCollectionEquality().hash(publishStep) ^
       const DeepCollectionEquality().hash(publishFailureOrSuccessOption);
@@ -283,29 +265,26 @@ class _$_PublishState implements _PublishState {
 abstract class _PublishState implements PublishState {
   factory _PublishState(
       {String? pathVideo,
-      String? pathThumbnail,
-      String? chart1,
-      String? chart2,
+      Uint8List? thumbnail,
+      Uint8List? chart1,
       required bool isSubmitting,
       required PublishStep publishStep,
-      required Option<Either<PublishFailure, String>>
+      required Option<Either<PublishFailure, PublishSucces>>
           publishFailureOrSuccessOption}) = _$_PublishState;
 
   @override
   String? get pathVideo => throw _privateConstructorUsedError;
   @override
-  String? get pathThumbnail => throw _privateConstructorUsedError;
+  Uint8List? get thumbnail => throw _privateConstructorUsedError;
   @override
-  String? get chart1 => throw _privateConstructorUsedError;
-  @override
-  String? get chart2 => throw _privateConstructorUsedError;
+  Uint8List? get chart1 => throw _privateConstructorUsedError;
   @override
   bool get isSubmitting => throw _privateConstructorUsedError;
   @override
   PublishStep get publishStep => throw _privateConstructorUsedError;
   @override
-  Option<Either<PublishFailure, String>> get publishFailureOrSuccessOption =>
-      throw _privateConstructorUsedError;
+  Option<Either<PublishFailure, PublishSucces>>
+      get publishFailureOrSuccessOption => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$PublishStateCopyWith<_PublishState> get copyWith =>

@@ -15,10 +15,9 @@ class VideoDto with _$VideoDto {
     required String linkUrl,
     String? description,
     required String pathDonwload,
-    required String photoUrlUser,
+    required String? photoUrlUser,
     //
     required String chart1,
-    required String chart2,
   }) = _VideoDto;
 
   factory VideoDto.fromJson(Map<String, dynamic> json) => _$VideoDtoFromJson(json);

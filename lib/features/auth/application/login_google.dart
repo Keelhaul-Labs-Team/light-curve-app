@@ -6,7 +6,7 @@ import 'package:light_curve_app/redux/state/user_state/user_state.dart';
 class LoginWithGoogle {
   final IAuthSocialRepository _authRepository;
 
-  LoginWithGoogle(this._authRepository);
+  const LoginWithGoogle(this._authRepository);
 
   Future<Either<AuthFailure, UserState>> call() {
     return _authRepository.signInWithGoogle();

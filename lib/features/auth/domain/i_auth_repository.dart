@@ -7,7 +7,7 @@ abstract class IAuthSocialRepository {
   Future<Either<AuthFailure, UserState>> signInWithGoogle();
   Future<void> signOut();
 
-  UserState? getUserState();
+  UserState getUserState();
 }
 
 mixin ErrorCode {

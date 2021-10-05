@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:light_curve_app/config.dart';
 import 'package:light_curve_app/pages/init_page.dart';
 import 'package:light_curve_app/redux/actions/video_actions.dart';
 import 'package:light_curve_app/redux/middleware/auth_middleware.dart';
@@ -17,23 +19,30 @@ import 'package:redux/redux.dart';
 import 'package:redux_epics/redux_epics.dart';
 
 import 'features/auth/Infraestructure/firebase_auth_social_repository.dart';
-import 'features/auth/Infraestructure/mock_auth_repository.dart';
 import 'features/auth/application/login_google.dart';
 import 'features/auth/application/sign_out.dart';
+import 'features/publish/application/calculate_luminosity.dart';
+import 'features/publish/application/load_video.dart';
+import 'features/publish/application/publish_video.dart';
+import 'features/publish/infraestructure/firebase_publish_repository.dart';
+import 'features/publish/infraestructure/local_load_video_repository.dart';
+import 'features/publish/infraestructure/mock_calculate_repository.dart';
 import 'features/videos/infraestructure/firebase_videos_repository.dart';
-import 'features/videos/infraestructure/mock_videos_repository.dart';
 
-late String applicationDocumentsDirectory;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   applicationDocumentsDirectory = (await getApplicationDocumentsDirectory()).path;
   final firebaseAuth = FirebaseAuth.instance;
   final googleSignIn = GoogleSignIn();
+  const videoRepository = LocalVideoRepository();
   final firestore = FirebaseFirestore.instance;
+  final storage = FirebaseStorage.instance;
   final authRepository = FirebaseAuthSocialRepository(firebaseAuth, googleSignIn);
   //final fakeVideoRepository = MockVideosRepository();
   final videoExampleRepository = FirebaseVideosRepository(firestore);
+  final publishRepository = FirebasePublishRepository(firestore, storage);
+  const calculateRepository = MockCalculateRepository();
 
   runApp(LightCurveApp(
     store: Store<AppState>(
@@ -44,7 +53,11 @@ Future<void> main() async {
           loginWithGoogle: LoginWithGoogle(authRepository),
           signOutApp: SignOut(authRepository),
         ),
-        ...createPublishMiddlewares(firestore),
+        ...createPublishMiddlewares(
+          PublishVideo(publishRepository),
+          const LoadVideoFile(videoRepository),
+          const CalculateLuminosity(calculateRepository),
+        ),
         EpicMiddleware(getEpicMiddleware(
           videosExampleRepository: videoExampleRepository,
           videosUserRepository: videoExampleRepository,

@@ -1,7 +1,6 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:light_curve_app/config.dart';
 import 'package:light_curve_app/pages/init_page.dart';
 import 'package:light_curve_app/redux/actions/video_actions.dart';
 import 'package:light_curve_app/redux/middleware/auth_middleware.dart';
@@ -17,31 +16,41 @@ import 'package:redux_epics/redux_epics.dart';
 import 'features/auth/Infraestructure/mock_auth_repository.dart';
 import 'features/auth/application/login_google.dart';
 import 'features/auth/application/sign_out.dart';
+import 'features/publish/application/calculate_luminosity.dart';
+import 'features/publish/application/load_video.dart';
+import 'features/publish/application/publish_video.dart';
+import 'features/publish/infraestructure/local_load_video_repository.dart';
+import 'features/publish/infraestructure/mock_calculate_repository.dart';
+import 'features/publish/infraestructure/mock_publish_repository.dart';
 import 'features/videos/infraestructure/mock_videos_repository.dart';
 
-late String applicationDocumentsDirectory;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+
   applicationDocumentsDirectory = (await getApplicationDocumentsDirectory()).path;
 
-  final firestore = FirebaseFirestore.instance;
-  final authRepository = FakeSocialRepository();
-  final fakeVideoRepository = MockVideosRepository();
-
+  const videoRepository = LocalVideoRepository();
+  const authRepository = FakeSocialRepository();
+  const videosRepository = MockVideosRepository();
+  const calculateRepository = MockCalculateRepository();
+  const publishRepository = MockPublishRepository();
   runApp(LightCurveApp(
     store: Store<AppState>(
       appReducer,
       initialState: AppState.initial(userState: authRepository.getUserState()),
       middleware: [
         ...createAuthMiddlewares(
-          loginWithGoogle: LoginWithGoogle(authRepository),
-          signOutApp: SignOut(authRepository),
+          loginWithGoogle: const LoginWithGoogle(authRepository),
+          signOutApp: const SignOut(authRepository),
         ),
-        ...createPublishMiddlewares(firestore),
+        ...createPublishMiddlewares(
+          const PublishVideo(publishRepository),
+          const LoadVideoFile(videoRepository),
+          const CalculateLuminosity(calculateRepository),
+        ),
         EpicMiddleware(getEpicMiddleware(
-          videosExampleRepository: fakeVideoRepository,
-          videosUserRepository: fakeVideoRepository,
+          videosExampleRepository: videosRepository,
+          videosUserRepository: videosRepository,
         ))
       ],
     ),

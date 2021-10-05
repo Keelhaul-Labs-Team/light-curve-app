@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:light_curve_app/config.dart';
+import 'package:light_curve_app/pages/publish_page/widgets/load_indicator.dart';
 import 'package:light_curve_app/redux/actions/publish_action.dart';
 import 'package:light_curve_app/redux/state/app_state.dart';
 
@@ -17,7 +18,7 @@ class LoadVideoPage extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        Image.asset(AssetsFile.videoPicture),
+        if (isSubmitting) const LoadIndicator() else Image.asset(AssetsFile.videoPicture),
         PrimaryButton(
           isSubmitting: isSubmitting,
           onPress: () => StoreProvider.of<AppState>(context).dispatch(const LoadVideoAction()),

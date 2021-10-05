@@ -30,9 +30,8 @@ class _$VideoDtoTearOff {
       required String linkUrl,
       String? description,
       required String pathDonwload,
-      required String photoUrlUser,
-      required String chart1,
-      required String chart2}) {
+      required String? photoUrlUser,
+      required String chart1}) {
     return _VideoDto(
       id: id,
       thumbnail: thumbnail,
@@ -45,7 +44,6 @@ class _$VideoDtoTearOff {
       pathDonwload: pathDonwload,
       photoUrlUser: photoUrlUser,
       chart1: chart1,
-      chart2: chart2,
     );
   }
 
@@ -68,9 +66,8 @@ mixin _$VideoDto {
   String get linkUrl => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
   String get pathDonwload => throw _privateConstructorUsedError;
-  String get photoUrlUser => throw _privateConstructorUsedError; //
+  String? get photoUrlUser => throw _privateConstructorUsedError; //
   String get chart1 => throw _privateConstructorUsedError;
-  String get chart2 => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -92,9 +89,8 @@ abstract class $VideoDtoCopyWith<$Res> {
       String linkUrl,
       String? description,
       String pathDonwload,
-      String photoUrlUser,
-      String chart1,
-      String chart2});
+      String? photoUrlUser,
+      String chart1});
 }
 
 /// @nodoc
@@ -118,7 +114,6 @@ class _$VideoDtoCopyWithImpl<$Res> implements $VideoDtoCopyWith<$Res> {
     Object? pathDonwload = freezed,
     Object? photoUrlUser = freezed,
     Object? chart1 = freezed,
-    Object? chart2 = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -160,14 +155,10 @@ class _$VideoDtoCopyWithImpl<$Res> implements $VideoDtoCopyWith<$Res> {
       photoUrlUser: photoUrlUser == freezed
           ? _value.photoUrlUser
           : photoUrlUser // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       chart1: chart1 == freezed
           ? _value.chart1
           : chart1 // ignore: cast_nullable_to_non_nullable
-              as String,
-      chart2: chart2 == freezed
-          ? _value.chart2
-          : chart2 // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -188,9 +179,8 @@ abstract class _$VideoDtoCopyWith<$Res> implements $VideoDtoCopyWith<$Res> {
       String linkUrl,
       String? description,
       String pathDonwload,
-      String photoUrlUser,
-      String chart1,
-      String chart2});
+      String? photoUrlUser,
+      String chart1});
 }
 
 /// @nodoc
@@ -215,7 +205,6 @@ class __$VideoDtoCopyWithImpl<$Res> extends _$VideoDtoCopyWithImpl<$Res>
     Object? pathDonwload = freezed,
     Object? photoUrlUser = freezed,
     Object? chart1 = freezed,
-    Object? chart2 = freezed,
   }) {
     return _then(_VideoDto(
       id: id == freezed
@@ -257,14 +246,10 @@ class __$VideoDtoCopyWithImpl<$Res> extends _$VideoDtoCopyWithImpl<$Res>
       photoUrlUser: photoUrlUser == freezed
           ? _value.photoUrlUser
           : photoUrlUser // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       chart1: chart1 == freezed
           ? _value.chart1
           : chart1 // ignore: cast_nullable_to_non_nullable
-              as String,
-      chart2: chart2 == freezed
-          ? _value.chart2
-          : chart2 // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -284,8 +269,7 @@ class _$_VideoDto implements _VideoDto {
       this.description,
       required this.pathDonwload,
       required this.photoUrlUser,
-      required this.chart1,
-      required this.chart2});
+      required this.chart1});
 
   factory _$_VideoDto.fromJson(Map<String, dynamic> json) =>
       _$_$_VideoDtoFromJson(json);
@@ -309,15 +293,13 @@ class _$_VideoDto implements _VideoDto {
   @override
   final String pathDonwload;
   @override
-  final String photoUrlUser;
+  final String? photoUrlUser;
   @override //
   final String chart1;
-  @override
-  final String chart2;
 
   @override
   String toString() {
-    return 'VideoDto(id: $id, thumbnail: $thumbnail, title: $title, uidUser: $uidUser, timestamp: $timestamp, size: $size, linkUrl: $linkUrl, description: $description, pathDonwload: $pathDonwload, photoUrlUser: $photoUrlUser, chart1: $chart1, chart2: $chart2)';
+    return 'VideoDto(id: $id, thumbnail: $thumbnail, title: $title, uidUser: $uidUser, timestamp: $timestamp, size: $size, linkUrl: $linkUrl, description: $description, pathDonwload: $pathDonwload, photoUrlUser: $photoUrlUser, chart1: $chart1)';
   }
 
   @override
@@ -352,9 +334,7 @@ class _$_VideoDto implements _VideoDto {
                 const DeepCollectionEquality()
                     .equals(other.photoUrlUser, photoUrlUser)) &&
             (identical(other.chart1, chart1) ||
-                const DeepCollectionEquality().equals(other.chart1, chart1)) &&
-            (identical(other.chart2, chart2) ||
-                const DeepCollectionEquality().equals(other.chart2, chart2)));
+                const DeepCollectionEquality().equals(other.chart1, chart1)));
   }
 
   @override
@@ -370,8 +350,7 @@ class _$_VideoDto implements _VideoDto {
       const DeepCollectionEquality().hash(description) ^
       const DeepCollectionEquality().hash(pathDonwload) ^
       const DeepCollectionEquality().hash(photoUrlUser) ^
-      const DeepCollectionEquality().hash(chart1) ^
-      const DeepCollectionEquality().hash(chart2);
+      const DeepCollectionEquality().hash(chart1);
 
   @JsonKey(ignore: true)
   @override
@@ -395,9 +374,8 @@ abstract class _VideoDto implements VideoDto {
       required String linkUrl,
       String? description,
       required String pathDonwload,
-      required String photoUrlUser,
-      required String chart1,
-      required String chart2}) = _$_VideoDto;
+      required String? photoUrlUser,
+      required String chart1}) = _$_VideoDto;
 
   factory _VideoDto.fromJson(Map<String, dynamic> json) = _$_VideoDto.fromJson;
 
@@ -420,11 +398,9 @@ abstract class _VideoDto implements VideoDto {
   @override
   String get pathDonwload => throw _privateConstructorUsedError;
   @override
-  String get photoUrlUser => throw _privateConstructorUsedError;
+  String? get photoUrlUser => throw _privateConstructorUsedError;
   @override //
   String get chart1 => throw _privateConstructorUsedError;
-  @override
-  String get chart2 => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$VideoDtoCopyWith<_VideoDto> get copyWith =>

@@ -1,10 +1,9 @@
 import 'dart:io';
 import 'dart:math';
+import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:light_curve_app/config.dart';
-import 'package:light_curve_app/pages/widgets/video_thumbnail.dart';
 import 'package:light_curve_app/redux/actions/publish_action.dart';
 import 'package:light_curve_app/redux/state/app_state.dart';
 import 'package:open_file/open_file.dart';
@@ -14,7 +13,7 @@ import 'widgets/buttons.dart';
 
 class CalculateVideoPage extends StatelessWidget {
   final bool isSubmitting;
-  final String thumbnail;
+  final Uint8List? thumbnail;
   final String pathVideo;
   const CalculateVideoPage(
       {Key? key, required this.isSubmitting, required this.thumbnail, required this.pathVideo})
@@ -37,11 +36,13 @@ class CalculateVideoPage extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: const BorderRadius.all(Radius.circular(4)),
                 color: Colors.blueGrey,
-                image: DecorationImage(
-                  image: FileImage(File(thumbnail)),
-                  onError: (exception, stackTrace) => {},
-                  fit: BoxFit.cover,
-                )),
+                image: thumbnail == null
+                    ? null
+                    : DecorationImage(
+                        image: MemoryImage(thumbnail!),
+                        onError: (exception, stackTrace) => {},
+                        fit: BoxFit.cover,
+                      )),
             child: LayoutBuilder(builder: (context, constraints) {
               return Stack(
                 alignment: Alignment.center,

@@ -16,21 +16,14 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$UserStateTearOff {
   const _$UserStateTearOff();
 
-  _UserState call(
-      {String? name,
-      String? photoUrl,
-      required String uid,
-      required String email}) {
-    return _UserState(
-      name: name,
-      photoUrl: photoUrl,
-      uid: uid,
-      email: email,
+  UserData data(UserDto user) {
+    return UserData(
+      user,
     );
   }
 
-  NotLogged notLogged() {
-    return const NotLogged();
+  UserNotLogged notLogged() {
+    return const UserNotLogged();
   }
 
   UserError error(Object err) {
@@ -46,33 +39,31 @@ const $UserState = _$UserStateTearOff();
 /// @nodoc
 mixin _$UserState {
   @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(String? name, String? photoUrl, String uid, String email)
-        $default, {
+  TResult when<TResult extends Object?>({
+    required TResult Function(UserDto user) data,
     required TResult Function() notLogged,
     required TResult Function(Object err) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String? name, String? photoUrl, String uid, String email)?
-        $default, {
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(UserDto user)? data,
     TResult Function()? notLogged,
     TResult Function(Object err)? error,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_UserState value) $default, {
-    required TResult Function(NotLogged value) notLogged,
+  TResult map<TResult extends Object?>({
+    required TResult Function(UserData value) data,
+    required TResult Function(UserNotLogged value) notLogged,
     required TResult Function(UserError value) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_UserState value)? $default, {
-    TResult Function(NotLogged value)? notLogged,
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UserData value)? data,
+    TResult Function(UserNotLogged value)? notLogged,
     TResult Function(UserError value)? error,
     required TResult orElse(),
   }) =>
@@ -95,185 +86,153 @@ class _$UserStateCopyWithImpl<$Res> implements $UserStateCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$UserStateCopyWith<$Res> {
-  factory _$UserStateCopyWith(
-          _UserState value, $Res Function(_UserState) then) =
-      __$UserStateCopyWithImpl<$Res>;
-  $Res call({String? name, String? photoUrl, String uid, String email});
+abstract class $UserDataCopyWith<$Res> {
+  factory $UserDataCopyWith(UserData value, $Res Function(UserData) then) =
+      _$UserDataCopyWithImpl<$Res>;
+  $Res call({UserDto user});
+
+  $UserDtoCopyWith<$Res> get user;
 }
 
 /// @nodoc
-class __$UserStateCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
-    implements _$UserStateCopyWith<$Res> {
-  __$UserStateCopyWithImpl(_UserState _value, $Res Function(_UserState) _then)
-      : super(_value, (v) => _then(v as _UserState));
+class _$UserDataCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
+    implements $UserDataCopyWith<$Res> {
+  _$UserDataCopyWithImpl(UserData _value, $Res Function(UserData) _then)
+      : super(_value, (v) => _then(v as UserData));
 
   @override
-  _UserState get _value => super._value as _UserState;
+  UserData get _value => super._value as UserData;
 
   @override
   $Res call({
-    Object? name = freezed,
-    Object? photoUrl = freezed,
-    Object? uid = freezed,
-    Object? email = freezed,
+    Object? user = freezed,
   }) {
-    return _then(_UserState(
-      name: name == freezed
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      photoUrl: photoUrl == freezed
-          ? _value.photoUrl
-          : photoUrl // ignore: cast_nullable_to_non_nullable
-              as String?,
-      uid: uid == freezed
-          ? _value.uid
-          : uid // ignore: cast_nullable_to_non_nullable
-              as String,
-      email: email == freezed
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String,
+    return _then(UserData(
+      user == freezed
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as UserDto,
     ));
+  }
+
+  @override
+  $UserDtoCopyWith<$Res> get user {
+    return $UserDtoCopyWith<$Res>(_value.user, (value) {
+      return _then(_value.copyWith(user: value));
+    });
   }
 }
 
 /// @nodoc
 
-class _$_UserState implements _UserState {
-  _$_UserState(
-      {this.name, this.photoUrl, required this.uid, required this.email});
+class _$UserData implements UserData {
+  _$UserData(this.user);
 
   @override
-  final String? name;
-  @override
-  final String? photoUrl;
-  @override
-  final String uid;
-  @override
-  final String email;
+  final UserDto user;
 
   @override
   String toString() {
-    return 'UserState(name: $name, photoUrl: $photoUrl, uid: $uid, email: $email)';
+    return 'UserState.data(user: $user)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _UserState &&
-            (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)) &&
-            (identical(other.photoUrl, photoUrl) ||
-                const DeepCollectionEquality()
-                    .equals(other.photoUrl, photoUrl)) &&
-            (identical(other.uid, uid) ||
-                const DeepCollectionEquality().equals(other.uid, uid)) &&
-            (identical(other.email, email) ||
-                const DeepCollectionEquality().equals(other.email, email)));
+        (other is UserData &&
+            (identical(other.user, user) ||
+                const DeepCollectionEquality().equals(other.user, user)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(name) ^
-      const DeepCollectionEquality().hash(photoUrl) ^
-      const DeepCollectionEquality().hash(uid) ^
-      const DeepCollectionEquality().hash(email);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(user);
 
   @JsonKey(ignore: true)
   @override
-  _$UserStateCopyWith<_UserState> get copyWith =>
-      __$UserStateCopyWithImpl<_UserState>(this, _$identity);
+  $UserDataCopyWith<UserData> get copyWith =>
+      _$UserDataCopyWithImpl<UserData>(this, _$identity);
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(String? name, String? photoUrl, String uid, String email)
-        $default, {
+  TResult when<TResult extends Object?>({
+    required TResult Function(UserDto user) data,
     required TResult Function() notLogged,
     required TResult Function(Object err) error,
   }) {
-    return $default(name, photoUrl, uid, email);
+    return data(user);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String? name, String? photoUrl, String uid, String email)?
-        $default, {
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(UserDto user)? data,
     TResult Function()? notLogged,
     TResult Function(Object err)? error,
     required TResult orElse(),
   }) {
-    if ($default != null) {
-      return $default(name, photoUrl, uid, email);
+    if (data != null) {
+      return data(user);
     }
     return orElse();
   }
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_UserState value) $default, {
-    required TResult Function(NotLogged value) notLogged,
+  TResult map<TResult extends Object?>({
+    required TResult Function(UserData value) data,
+    required TResult Function(UserNotLogged value) notLogged,
     required TResult Function(UserError value) error,
   }) {
-    return $default(this);
+    return data(this);
   }
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_UserState value)? $default, {
-    TResult Function(NotLogged value)? notLogged,
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UserData value)? data,
+    TResult Function(UserNotLogged value)? notLogged,
     TResult Function(UserError value)? error,
     required TResult orElse(),
   }) {
-    if ($default != null) {
-      return $default(this);
+    if (data != null) {
+      return data(this);
     }
     return orElse();
   }
 }
 
-abstract class _UserState implements UserState {
-  factory _UserState(
-      {String? name,
-      String? photoUrl,
-      required String uid,
-      required String email}) = _$_UserState;
+abstract class UserData implements UserState {
+  factory UserData(UserDto user) = _$UserData;
 
-  String? get name => throw _privateConstructorUsedError;
-  String? get photoUrl => throw _privateConstructorUsedError;
-  String get uid => throw _privateConstructorUsedError;
-  String get email => throw _privateConstructorUsedError;
+  UserDto get user => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$UserStateCopyWith<_UserState> get copyWith =>
+  $UserDataCopyWith<UserData> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $NotLoggedCopyWith<$Res> {
-  factory $NotLoggedCopyWith(NotLogged value, $Res Function(NotLogged) then) =
-      _$NotLoggedCopyWithImpl<$Res>;
+abstract class $UserNotLoggedCopyWith<$Res> {
+  factory $UserNotLoggedCopyWith(
+          UserNotLogged value, $Res Function(UserNotLogged) then) =
+      _$UserNotLoggedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$NotLoggedCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
-    implements $NotLoggedCopyWith<$Res> {
-  _$NotLoggedCopyWithImpl(NotLogged _value, $Res Function(NotLogged) _then)
-      : super(_value, (v) => _then(v as NotLogged));
+class _$UserNotLoggedCopyWithImpl<$Res> extends _$UserStateCopyWithImpl<$Res>
+    implements $UserNotLoggedCopyWith<$Res> {
+  _$UserNotLoggedCopyWithImpl(
+      UserNotLogged _value, $Res Function(UserNotLogged) _then)
+      : super(_value, (v) => _then(v as UserNotLogged));
 
   @override
-  NotLogged get _value => super._value as NotLogged;
+  UserNotLogged get _value => super._value as UserNotLogged;
 }
 
 /// @nodoc
 
-class _$NotLogged implements NotLogged {
-  const _$NotLogged();
+class _$UserNotLogged implements UserNotLogged {
+  const _$UserNotLogged();
 
   @override
   String toString() {
@@ -282,7 +241,7 @@ class _$NotLogged implements NotLogged {
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is NotLogged);
+    return identical(this, other) || (other is UserNotLogged);
   }
 
   @override
@@ -290,9 +249,8 @@ class _$NotLogged implements NotLogged {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(String? name, String? photoUrl, String uid, String email)
-        $default, {
+  TResult when<TResult extends Object?>({
+    required TResult Function(UserDto user) data,
     required TResult Function() notLogged,
     required TResult Function(Object err) error,
   }) {
@@ -301,9 +259,8 @@ class _$NotLogged implements NotLogged {
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String? name, String? photoUrl, String uid, String email)?
-        $default, {
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(UserDto user)? data,
     TResult Function()? notLogged,
     TResult Function(Object err)? error,
     required TResult orElse(),
@@ -316,9 +273,9 @@ class _$NotLogged implements NotLogged {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_UserState value) $default, {
-    required TResult Function(NotLogged value) notLogged,
+  TResult map<TResult extends Object?>({
+    required TResult Function(UserData value) data,
+    required TResult Function(UserNotLogged value) notLogged,
     required TResult Function(UserError value) error,
   }) {
     return notLogged(this);
@@ -326,9 +283,9 @@ class _$NotLogged implements NotLogged {
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_UserState value)? $default, {
-    TResult Function(NotLogged value)? notLogged,
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UserData value)? data,
+    TResult Function(UserNotLogged value)? notLogged,
     TResult Function(UserError value)? error,
     required TResult orElse(),
   }) {
@@ -339,8 +296,8 @@ class _$NotLogged implements NotLogged {
   }
 }
 
-abstract class NotLogged implements UserState {
-  const factory NotLogged() = _$NotLogged;
+abstract class UserNotLogged implements UserState {
+  const factory UserNotLogged() = _$UserNotLogged;
 }
 
 /// @nodoc
@@ -404,9 +361,8 @@ class _$UserError implements UserError {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object?>(
-    TResult Function(String? name, String? photoUrl, String uid, String email)
-        $default, {
+  TResult when<TResult extends Object?>({
+    required TResult Function(UserDto user) data,
     required TResult Function() notLogged,
     required TResult Function(Object err) error,
   }) {
@@ -415,9 +371,8 @@ class _$UserError implements UserError {
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>(
-    TResult Function(String? name, String? photoUrl, String uid, String email)?
-        $default, {
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(UserDto user)? data,
     TResult Function()? notLogged,
     TResult Function(Object err)? error,
     required TResult orElse(),
@@ -430,9 +385,9 @@ class _$UserError implements UserError {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>(
-    TResult Function(_UserState value) $default, {
-    required TResult Function(NotLogged value) notLogged,
+  TResult map<TResult extends Object?>({
+    required TResult Function(UserData value) data,
+    required TResult Function(UserNotLogged value) notLogged,
     required TResult Function(UserError value) error,
   }) {
     return error(this);
@@ -440,9 +395,9 @@ class _$UserError implements UserError {
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>(
-    TResult Function(_UserState value)? $default, {
-    TResult Function(NotLogged value)? notLogged,
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(UserData value)? data,
+    TResult Function(UserNotLogged value)? notLogged,
     TResult Function(UserError value)? error,
     required TResult orElse(),
   }) {

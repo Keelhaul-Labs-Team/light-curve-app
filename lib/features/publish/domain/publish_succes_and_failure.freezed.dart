@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
-part of 'auth_failure.dart';
+part of 'publish_succes_and_failure.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -618,4 +618,343 @@ class _$NotPublished implements NotPublished {
 
 abstract class NotPublished implements PublishFailure {
   const factory NotPublished() = _$NotPublished;
+}
+
+/// @nodoc
+class _$PublishSuccesTearOff {
+  const _$PublishSuccesTearOff();
+
+  LoadSucces loadSucces() {
+    return const LoadSucces();
+  }
+
+  CalculatedSucces calculatedSucces() {
+    return const CalculatedSucces();
+  }
+
+  UploadhSucces uploadSucces() {
+    return const UploadhSucces();
+  }
+}
+
+/// @nodoc
+const $PublishSucces = _$PublishSuccesTearOff();
+
+/// @nodoc
+mixin _$PublishSucces {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadSucces,
+    required TResult Function() calculatedSucces,
+    required TResult Function() uploadSucces,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadSucces,
+    TResult Function()? calculatedSucces,
+    TResult Function()? uploadSucces,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadSucces value) loadSucces,
+    required TResult Function(CalculatedSucces value) calculatedSucces,
+    required TResult Function(UploadhSucces value) uploadSucces,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadSucces value)? loadSucces,
+    TResult Function(CalculatedSucces value)? calculatedSucces,
+    TResult Function(UploadhSucces value)? uploadSucces,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $PublishSuccesCopyWith<$Res> {
+  factory $PublishSuccesCopyWith(
+          PublishSucces value, $Res Function(PublishSucces) then) =
+      _$PublishSuccesCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$PublishSuccesCopyWithImpl<$Res>
+    implements $PublishSuccesCopyWith<$Res> {
+  _$PublishSuccesCopyWithImpl(this._value, this._then);
+
+  final PublishSucces _value;
+  // ignore: unused_field
+  final $Res Function(PublishSucces) _then;
+}
+
+/// @nodoc
+abstract class $LoadSuccesCopyWith<$Res> {
+  factory $LoadSuccesCopyWith(
+          LoadSucces value, $Res Function(LoadSucces) then) =
+      _$LoadSuccesCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$LoadSuccesCopyWithImpl<$Res> extends _$PublishSuccesCopyWithImpl<$Res>
+    implements $LoadSuccesCopyWith<$Res> {
+  _$LoadSuccesCopyWithImpl(LoadSucces _value, $Res Function(LoadSucces) _then)
+      : super(_value, (v) => _then(v as LoadSucces));
+
+  @override
+  LoadSucces get _value => super._value as LoadSucces;
+}
+
+/// @nodoc
+
+class _$LoadSucces implements LoadSucces {
+  const _$LoadSucces();
+
+  @override
+  String toString() {
+    return 'PublishSucces.loadSucces()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is LoadSucces);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadSucces,
+    required TResult Function() calculatedSucces,
+    required TResult Function() uploadSucces,
+  }) {
+    return loadSucces();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadSucces,
+    TResult Function()? calculatedSucces,
+    TResult Function()? uploadSucces,
+    required TResult orElse(),
+  }) {
+    if (loadSucces != null) {
+      return loadSucces();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadSucces value) loadSucces,
+    required TResult Function(CalculatedSucces value) calculatedSucces,
+    required TResult Function(UploadhSucces value) uploadSucces,
+  }) {
+    return loadSucces(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadSucces value)? loadSucces,
+    TResult Function(CalculatedSucces value)? calculatedSucces,
+    TResult Function(UploadhSucces value)? uploadSucces,
+    required TResult orElse(),
+  }) {
+    if (loadSucces != null) {
+      return loadSucces(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoadSucces implements PublishSucces {
+  const factory LoadSucces() = _$LoadSucces;
+}
+
+/// @nodoc
+abstract class $CalculatedSuccesCopyWith<$Res> {
+  factory $CalculatedSuccesCopyWith(
+          CalculatedSucces value, $Res Function(CalculatedSucces) then) =
+      _$CalculatedSuccesCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$CalculatedSuccesCopyWithImpl<$Res>
+    extends _$PublishSuccesCopyWithImpl<$Res>
+    implements $CalculatedSuccesCopyWith<$Res> {
+  _$CalculatedSuccesCopyWithImpl(
+      CalculatedSucces _value, $Res Function(CalculatedSucces) _then)
+      : super(_value, (v) => _then(v as CalculatedSucces));
+
+  @override
+  CalculatedSucces get _value => super._value as CalculatedSucces;
+}
+
+/// @nodoc
+
+class _$CalculatedSucces implements CalculatedSucces {
+  const _$CalculatedSucces();
+
+  @override
+  String toString() {
+    return 'PublishSucces.calculatedSucces()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is CalculatedSucces);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadSucces,
+    required TResult Function() calculatedSucces,
+    required TResult Function() uploadSucces,
+  }) {
+    return calculatedSucces();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadSucces,
+    TResult Function()? calculatedSucces,
+    TResult Function()? uploadSucces,
+    required TResult orElse(),
+  }) {
+    if (calculatedSucces != null) {
+      return calculatedSucces();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadSucces value) loadSucces,
+    required TResult Function(CalculatedSucces value) calculatedSucces,
+    required TResult Function(UploadhSucces value) uploadSucces,
+  }) {
+    return calculatedSucces(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadSucces value)? loadSucces,
+    TResult Function(CalculatedSucces value)? calculatedSucces,
+    TResult Function(UploadhSucces value)? uploadSucces,
+    required TResult orElse(),
+  }) {
+    if (calculatedSucces != null) {
+      return calculatedSucces(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class CalculatedSucces implements PublishSucces {
+  const factory CalculatedSucces() = _$CalculatedSucces;
+}
+
+/// @nodoc
+abstract class $UploadhSuccesCopyWith<$Res> {
+  factory $UploadhSuccesCopyWith(
+          UploadhSucces value, $Res Function(UploadhSucces) then) =
+      _$UploadhSuccesCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$UploadhSuccesCopyWithImpl<$Res>
+    extends _$PublishSuccesCopyWithImpl<$Res>
+    implements $UploadhSuccesCopyWith<$Res> {
+  _$UploadhSuccesCopyWithImpl(
+      UploadhSucces _value, $Res Function(UploadhSucces) _then)
+      : super(_value, (v) => _then(v as UploadhSucces));
+
+  @override
+  UploadhSucces get _value => super._value as UploadhSucces;
+}
+
+/// @nodoc
+
+class _$UploadhSucces implements UploadhSucces {
+  const _$UploadhSucces();
+
+  @override
+  String toString() {
+    return 'PublishSucces.uploadSucces()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is UploadhSucces);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadSucces,
+    required TResult Function() calculatedSucces,
+    required TResult Function() uploadSucces,
+  }) {
+    return uploadSucces();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadSucces,
+    TResult Function()? calculatedSucces,
+    TResult Function()? uploadSucces,
+    required TResult orElse(),
+  }) {
+    if (uploadSucces != null) {
+      return uploadSucces();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(LoadSucces value) loadSucces,
+    required TResult Function(CalculatedSucces value) calculatedSucces,
+    required TResult Function(UploadhSucces value) uploadSucces,
+  }) {
+    return uploadSucces(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(LoadSucces value)? loadSucces,
+    TResult Function(CalculatedSucces value)? calculatedSucces,
+    TResult Function(UploadhSucces value)? uploadSucces,
+    required TResult orElse(),
+  }) {
+    if (uploadSucces != null) {
+      return uploadSucces(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UploadhSucces implements PublishSucces {
+  const factory UploadhSucces() = _$UploadhSucces;
 }

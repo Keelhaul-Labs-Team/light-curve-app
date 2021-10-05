@@ -1,12 +1,13 @@
 import 'dart:io';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:light_curve_app/config.dart';
 import 'package:light_curve_app/features/videos/domain/video_dto.dart';
-import 'package:light_curve_app/main.dart';
+
 import 'package:light_curve_app/pages/auth/container/container_avatar.dart';
 
-import 'package:flutter/foundation.dart';
 import 'package:light_curve_app/pages/auth/widget/show_snackbar.dart';
 import 'package:path/path.dart' as path;
 import 'package:share_plus/share_plus.dart';
@@ -54,7 +55,15 @@ class VideoChart extends StatelessWidget {
               padding: const EdgeInsets.all(16.0),
               child: CachedNetworkImage(
                 imageUrl: video.chart1,
-                placeholder: (context, url) => const CircularProgressIndicator(),
+                placeholder: (context, url) => SizedBox(
+                  height: 75,
+                  width: 75,
+                  child: CircularProgressIndicator(
+                    strokeWidth: 6,
+                    backgroundColor: Theme.of(context).primaryColor.withOpacity(0.1),
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
                 errorWidget: (context, url, error) => const Icon(Icons.error),
               ),
             ),

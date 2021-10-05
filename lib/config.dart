@@ -6,11 +6,14 @@ extension ColorUtils on Color {
   }
 }
 
+late String applicationDocumentsDirectory;
+
 final baseColor = const Color(0xffE3F2FD).mix(const Color(0xffFAFAFA), .4).mix(const Color(0xffE9EBEE), .2);
 
 class AssetsFile {
   static const logo = 'assets/logo.png';
   static const chart = 'assets/grafico-de-lineas.png';
+  static const chartExample = 'assets/mock_chart_1.jpg';
   static const astronomo = 'assets/astronomo.png';
   static const google = 'assets/google-icon.svg';
   static const videoPicture = 'assets/video_picture.png';

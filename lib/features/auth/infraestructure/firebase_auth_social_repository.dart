@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:light_curve_app/features/auth/domain/auth_failure.dart';
 import 'package:light_curve_app/features/auth/domain/i_auth_repository.dart';
+import 'package:light_curve_app/features/auth/domain/user_dto/user_dto.dart';
 import 'package:light_curve_app/redux/state/user_state/user_state.dart';
 
 class FirebaseAuthSocialRepository with ErrorCode implements IAuthSocialRepository {
@@ -34,7 +35,7 @@ class FirebaseAuthSocialRepository with ErrorCode implements IAuthSocialReposito
 
       await _firebaseAuth.signInWithCredential(authCredential);
 
-      return right(getUserState()!);
+      return right(getUserState());
     } on FirebaseAuthException catch (e) {
       return left(getAuthFailure(e));
     } catch (e) {
@@ -49,15 +50,17 @@ class FirebaseAuthSocialRepository with ErrorCode implements IAuthSocialReposito
   }
 
   @override
-  UserState? getUserState() {
+  UserState getUserState() {
     try {
       final currentUser = _firebaseAuth.currentUser;
-      if (currentUser == null) return null;
-      return UserState(
+
+      if (currentUser == null) return const UserState.notLogged();
+
+      return UserState.data(UserDto(
           email: currentUser.email!,
           uid: currentUser.uid,
           name: currentUser.displayName,
-          photoUrl: currentUser.photoURL);
+          photoUrl: currentUser.photoURL));
     } catch (e) {
       return UserState.error(e);
     }

@@ -1,6 +1,8 @@
+import 'dart:typed_data';
+
 import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:light_curve_app/features/publish/domain/auth_failure.dart';
+import 'package:light_curve_app/features/publish/domain/publish_succes_and_failure.dart';
 
 part 'publish_state.freezed.dart';
 
@@ -8,12 +10,11 @@ part 'publish_state.freezed.dart';
 class PublishState with _$PublishState {
   factory PublishState({
     String? pathVideo,
-    String? pathThumbnail,
-    String? chart1,
-    String? chart2,
+    Uint8List? thumbnail,
+    Uint8List? chart1,
     required bool isSubmitting,
     required PublishStep publishStep,
-    required Option<Either<PublishFailure, String>> publishFailureOrSuccessOption,
+    required Option<Either<PublishFailure, PublishSucces>> publishFailureOrSuccessOption,
   }) = _PublishState;
 
   factory PublishState.initial() => PublishState(

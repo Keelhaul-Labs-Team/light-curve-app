@@ -14,8 +14,8 @@ class AvatarUser extends StatelessWidget {
       distinct: true,
       converter: (store) => store.state.userState,
       builder: (context, userState) {
-        return userState.map(
-          (value) => IconButton(
+        return userState.when(
+          data: (value) => IconButton(
               padding: EdgeInsets.zero,
               onPressed: () => showDialog<bool>(
                     context: context,
@@ -35,7 +35,7 @@ class AvatarUser extends StatelessWidget {
                   //  child: value.photoUrl == null ? const Icon(Icons.person) : Image.network(value.photoUrl!),
                 ),
               )),
-          notLogged: (_) => const SizedBox(),
+          notLogged: () => const SizedBox(),
           error: (_) => const SizedBox(),
         );
       },

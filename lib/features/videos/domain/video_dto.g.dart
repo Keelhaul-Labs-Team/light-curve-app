@@ -17,9 +17,8 @@ _$_VideoDto _$_$_VideoDtoFromJson(Map<String, dynamic> json) {
     linkUrl: json['linkUrl'] as String,
     description: json['description'] as String?,
     pathDonwload: json['pathDonwload'] as String,
-    photoUrlUser: json['photoUrlUser'] as String,
+    photoUrlUser: json['photoUrlUser'] as String?,
     chart1: json['chart1'] as String,
-    chart2: json['chart2'] as String,
   );
 }
 
@@ -36,5 +35,4 @@ Map<String, dynamic> _$_$_VideoDtoToJson(_$_VideoDto instance) =>
       'pathDonwload': instance.pathDonwload,
       'photoUrlUser': instance.photoUrlUser,
       'chart1': instance.chart1,
-      'chart2': instance.chart2,
     };

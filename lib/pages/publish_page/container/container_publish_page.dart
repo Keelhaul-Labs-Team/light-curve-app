@@ -31,17 +31,17 @@ class ContainerPublishPage extends StatelessWidget {
         ]);
       },
       builder: (context, state) {
-        return state.userState is NotLogged
+        return state.userState is UserNotLogged
             ? const ContainerAuthPage()
             : state.publishState.publishStep.when(
                 init: () => LoadVideoPage(isSubmitting: state.publishState.isSubmitting),
                 loaded: () => CalculateVideoPage(
                   isSubmitting: state.publishState.isSubmitting,
-                  thumbnail: state.publishState.pathThumbnail!,
+                  thumbnail: state.publishState.thumbnail,
                   pathVideo: state.publishState.pathVideo!,
                 ),
                 calculated: () => PublishPage(
-                  chart1: state.publishState.chart1!,
+                  chart1: state.publishState.chart1,
                   isSubmitting: state.publishState.isSubmitting,
                 ),
               );
